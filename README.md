@@ -1,5 +1,5 @@
 <!--HEADER-->
-<h1 align="center"> Ft_printf | 
+<h1 align="center"> Ft_Printf | 
  <picture>
   <source media="(prefers-color-scheme: dark)" srcset="readme_resources/42_Logo_White.svg">
   <img alt="42 Logo" width=40 align="center" src="readme_resources/42_Logo.svg">
