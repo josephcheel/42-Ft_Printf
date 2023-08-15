@@ -9,7 +9,7 @@
 /*   Updated: 2022/04/21 12:56:34 by jcheel-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
 static size_t	ft_intlenght(int c)
 {

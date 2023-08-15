@@ -1,6 +1,14 @@
 NAME	=	libftprintf.a
 
-SRCS	= ft_printf.c \
+CFLAGS =  -W -Wall -Wextra -Werror
+XFLAGS	= -fsanitize=address -g2
+AR		= ar -rcs
+RM		= rm -f
+MD		= mkdir -p
+CP		= cp -f
+
+
+PRINTF_SRCS	= ft_printf.c \
 		  ft_printf_format.c \
 		  ft_printf_char.c \
 		  ft_printf_str.c \
@@ -11,27 +19,35 @@ SRCS	= ft_printf.c \
 		  ft_printf_ptr.c \
 		  ft_printf_utils.c \
 
-OBJS = ${SRCS:.c=.o}
+SRC_DIR = src/
+INC_DIR = inc/
+OBJ_DIR = obj/
 
-CC		=	gcc
+INCLUDE = -I $(INC_DIR)
 
-CFLAGS	=	-Wall -Werror -Wextra
+SRCS	+= $(addprefix $(SRC_DIR), $(PRINTF_SRCS))
+OBJS	= $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
+DEPS	= $(addsuffix .d, $(basename $(OBJS)))
 
-RM 		= 	rm -f
 
-.c.o:
-		$(CC) $(CFLAGS) -c  $< -o $(<:.c=.o)
+$(OBJ_DIR)%.o: %.c Makefile
+		@$(MD) $(dir $@)
+		@echo "	Compiling: $<"
+		@$(CC) -MT $@ -MMD $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(NAME):	$(OBJS) ft_printf.h 
+$(NAME):	$(OBJS) 
 			ar rcs $(NAME) $(OBJS)
 
 all:		$(NAME)
 
 clean:
-			$(RM) $(OBJS) 
+			$(RM) -r $(OBJ_DIR) 
 
 fclean:		clean  
 			$(RM) $(NAME)
 
-re:			fclean all
+re:		fclean all
 
+-include $(DEPS)
+
+.PHONY:	all clean fclean re

@@ -9,7 +9,7 @@
 /*   Updated: 2022/04/21 12:45:07 by jcheel-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
 int	ft_printf_format(char format, va_list arg)
 {

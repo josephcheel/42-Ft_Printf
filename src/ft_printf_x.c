@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_x.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcheel-n <jcheel-n@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 15:52:10 by jcheel-n          #+#    #+#             */
-/*   Updated: 2022/04/21 12:34:33 by jcheel-n         ###   ########.fr       */
+/*   Created: 2022/04/20 13:16:00 by jcheel-n          #+#    #+#             */
+/*   Updated: 2022/06/09 20:54:55 by jcheel-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_printf_x(unsigned long nbr)
 {
-	int		len;
-	int		i;
-	va_list	arg;
+	int	len;
 
-	i = 0;
 	len = 0;
-	va_start(arg, format);
-	while (format[i])
+	if (nbr >= 16)
 	{
-		if (format[i] == '%' && format[i])
-		{
-			len += ft_printf_format(format[i + 1], arg);
-			if (len < 0)
-				return (len);
-			i++;
-		}
-		else if (format[i] != '%' && format[i])
-			len += write(1, &format[i], 1);
-		i++;
+		len += ft_printf_x(nbr / 16);
+		len += ft_printf_x(nbr % 16);
 	}
-	va_end(arg);
+	else
+		len += write(1, &"0123456789abcdef"[nbr], 1);
 	return (len);
 }

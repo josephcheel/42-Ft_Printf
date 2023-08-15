@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_char.c                                   :+:      :+:    :+:   */
+/*   ft_printf_x_uppercase.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcheel-n <jcheel-n@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 13:14:13 by jcheel-n          #+#    #+#             */
-/*   Updated: 2022/04/20 17:55:32 by jcheel-n         ###   ########.fr       */
+/*   Created: 2022/04/20 13:16:09 by jcheel-n          #+#    #+#             */
+/*   Updated: 2022/04/20 18:06:54 by jcheel-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../inc/ft_printf.h"
 
-#include "ft_printf.h"
-
-int	ft_printf_char(char c)
+int	ft_printf_x_uppercase(unsigned long nbr)
 {
-	write(1, &c, 1);
-	return (1);
+	int	len;
+
+	len = 0;
+	if (nbr >= 16)
+	{
+		len += ft_printf_x_uppercase(nbr / 16);
+		len += ft_printf_x_uppercase(nbr % 16);
+	}
+	else
+		len += write(1, &"0123456789ABCDEF"[nbr % 16], 1);
+	return (len);
 }
