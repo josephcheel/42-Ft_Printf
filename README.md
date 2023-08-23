@@ -8,3 +8,5 @@
   <img alt="Complete" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/complete.svg">
 </h1>
 <!--FINISH HEADER-->
+
+ <img align="right" width="150" src="https://github.com/josephcheel/readme/blob/main/resources/100_Success.png">
