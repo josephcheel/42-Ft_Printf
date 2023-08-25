@@ -9,4 +9,12 @@
 </h1>
 <!--FINISH HEADER-->
 
- <img align="right" width="150" src="https://github.com/josephcheel/readme/blob/main/resources/100_Success.png">
+> Recoded Printf function from Libc
+
+<img align="right" width="150" src="https://github.com/josephcheel/readme/blob/main/resources/100_Success.png">
+
+### What is the project about
+This project has two parts organized in two level of difficulty: the mandatory and the bonus part. Mandatory only manages character, string, pointer, decimal, interger, unsigned decimal, hexadecimal and **'%'** sign.
+## General Instrucctions
+## Mandatory Instrucctions
+## Bonus Instrucctions
